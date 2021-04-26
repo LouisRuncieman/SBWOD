@@ -3,7 +3,6 @@ import 'package:workout_buddy/stopwatch.dart';
 import 'package:workout_buddy/settings.dart';
 
 class HomePageWidget extends StatelessWidget {
-  // const MyStatelessWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,52 +34,41 @@ class HomePageWidget extends StatelessWidget {
         Align(
           alignment: Alignment.center,
           child: Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(50),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                ButtonBar(
-                  alignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.black),
-                      child: new Text('FOR TIME'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Stopwatch()),
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      child: Text('AMRAP'),
-                      style: ElevatedButton.styleFrom(primary: Colors.black),
-                      onPressed: () {/** */},
-                    ),
-                    ElevatedButton(
-                      child: Text('ROUNDS FT'),
-                      style: ElevatedButton.styleFrom(primary: Colors.black),
-                      onPressed: () {/** */},
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.all(50),
+                  child: ElevatedButton(
+                    child: new Text('FOR TIME'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Stopwatch()),
+                      );
+                    },
+                  ),
                 ),
+            Padding(
+              padding: EdgeInsets.all(50),
+              child: ElevatedButton(
+                child: Text('AMRAP'),
+                onPressed: () {/** */},
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(50),
+              child: ElevatedButton(
+                child: Text('ROUNDS FT'),
+                onPressed: () {/** */},
+              ),
+            ),
               ],
             )
           )
         )
     );
-    // body: const Center(
-      //   child: Text(
-      //     'This is the home page',
-      //     style: TextStyle(fontSize: 24),
-      //       // onPressed: () {
-      //       //   Navigator.push(
-      //       //     context,
-      //       //     MaterialPageRoute(builder: (context) => Stopwatch()),
-      //       //   );
-      //       // }
-      //   ),
-      // ),
-    // );
   }
 }
