@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'SBWOD',
       home: HomePageWidget(),
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.black,
         accentColor: Color.fromRGBO(220, 171, 18, 1.0),
+        highlightColor: Color.fromRGBO(220, 171, 18, 1.0),
 
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
