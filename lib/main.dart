@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy/stopwatch.dart';
+import 'package:workout_buddy/homepage.dart';
 void main() {
   runApp(MyApp());
 }
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: FlutterStopWatch(),
+      home: HomePageWidget(),
     );
   }
 }

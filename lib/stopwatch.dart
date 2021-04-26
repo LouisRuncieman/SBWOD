@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class FlutterStopWatch extends StatefulWidget {
+class Stopwatch extends StatefulWidget {
   @override
-  _FlutterStopWatchState createState() => _FlutterStopWatchState();
+  _StopwatchState createState() => _StopwatchState();
 }
 
-class _FlutterStopWatchState extends State<FlutterStopWatch> {
+class _StopwatchState extends State<Stopwatch> {
   bool flag = true;
   Stream<int> timerStream;
   StreamSubscription<int> timerSubscription;
@@ -55,7 +55,7 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Flutter StopWatch")),
+      appBar: AppBar(title: Text("Stopwatch")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -70,27 +70,27 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RaisedButton(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.green),
                   onPressed: () {
                     timerStream = stopWatchStream();
                     timerSubscription = timerStream.listen((int newTick) {
-                      setState(() {
-                        hoursStr = ((newTick / (60 * 60)) % 60)
-                            .floor()
-                            .toString()
-                            .padLeft(2, '0');
-                        minutesStr = ((newTick / 60) % 60)
-                            .floor()
-                            .toString()
-                            .padLeft(2, '0');
-                        secondsStr =
-                            (newTick % 60).floor().toString().padLeft(2, '0');
-                      });
+                      if (mounted) {
+                        setState(() {
+                          hoursStr = ((newTick / (60 * 60)) % 60)
+                              .floor()
+                              .toString()
+                              .padLeft(2, '0');
+                          minutesStr = ((newTick / 60) % 60)
+                              .floor()
+                              .toString()
+                              .padLeft(2, '0');
+                          secondsStr =
+                              (newTick % 60).floor().toString().padLeft(2, '0');
+                        });
+                      }
                     });
                   },
-                  color: Colors.green,
                   child: Text(
                     'START',
                     style: TextStyle(
@@ -99,19 +99,19 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
                   ),
                 ),
                 SizedBox(width: 40.0),
-                RaisedButton(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.red),
                   onPressed: () {
                     timerSubscription.cancel();
                     timerStream = null;
-                    setState(() {
-                      hoursStr = '00';
-                      minutesStr = '00';
-                      secondsStr = '00';
-                    });
+                    if (mounted) {
+                      setState(() {
+                        hoursStr = '00';
+                        minutesStr = '00';
+                        secondsStr = '00';
+                      });
+                    }
                   },
-                  color: Colors.red,
                   child: Text(
                     'RESET',
                     style: TextStyle(
