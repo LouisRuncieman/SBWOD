@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:workout_buddy/src/views/stopwatch.dart';
+import 'package:workout_buddy/src/theme/colors.dart';
+import 'package:workout_buddy/src/theme/themes.dart';
 
 class ForTimeWidget extends StatelessWidget {
   const ForTimeWidget({
@@ -10,14 +12,14 @@ class ForTimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.black,
+        borderRadius: BorderRadius.circular(circularBorderRadius),
+        color: primaryBlackColor,
       ),
       child: Material(
           color: Colors.transparent,
           child: InkWell(
               customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(circularBorderRadius),
               ),
               onTap: () {
                 Navigator.push(
@@ -33,7 +35,7 @@ class ForTimeWidget extends StatelessWidget {
                           padding: EdgeInsets.only(bottom: 20),
                           child: Icon(
                             Icons.timer,
-                            color: Color.fromRGBO(220, 171, 18, 1.0),
+                            color: primaryGoldColor,
                             size: 75.0,
                           ),
                         ),
