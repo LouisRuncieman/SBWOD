@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy/src/theme/colors.dart';
-import 'package:workout_buddy/src/views/stopwatch.dart';
-import 'package:workout_buddy/src/theme/themes.dart';
+import 'package:workout_buddy/src/app/colors.dart';
+import 'package:workout_buddy/src/app/themes.dart';
 
 class RoundsForTimeWidget extends StatelessWidget {
   const RoundsForTimeWidget({
@@ -22,10 +21,7 @@ class RoundsForTimeWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(circularBorderRadius),
               ),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Stopwatch())
-                );
+                Navigator.pushNamed(context, '/stopwatch');
               },
               child: Padding(
                   padding: EdgeInsets.all(20),

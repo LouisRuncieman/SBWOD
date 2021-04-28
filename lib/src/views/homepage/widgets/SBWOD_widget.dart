@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy/src/theme/colors.dart';
+import 'package:workout_buddy/src/app/colors.dart';
 import 'package:workout_buddy/src/views/utils/launch_url.dart';
-import 'package:workout_buddy/src/theme/images.dart';
-import 'package:workout_buddy/src/theme/themes.dart';
+import 'package:workout_buddy/src/app/images.dart';
+import 'package:workout_buddy/src/app/themes.dart';
 
 class SbwodWidget extends StatelessWidget {
   const SbwodWidget({

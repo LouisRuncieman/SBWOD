@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy/src/views/homepage/homepage.dart';
-import 'package:workout_buddy/src/theme/themes.dart';
+import 'package:workout_buddy/src/app/themes.dart';
+import 'package:workout_buddy/src/app/routes.dart';
 
 void main() {
   runApp(WorkoutBuddy());
@@ -11,7 +11,7 @@ class WorkoutBuddy extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SBWOD',
-      home: HomePageWidget(),
+      routes: customRoutes,
       theme: mainTheme,
     );
   }

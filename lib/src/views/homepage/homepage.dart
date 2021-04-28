@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_buddy/src/views/settings.dart';
-import 'package:workout_buddy/src/theme/images.dart';
+import 'package:workout_buddy/src/app/images.dart';
 import 'widgets/for_time_widget.dart';
 import 'widgets/rounds_for_time_widget.dart';
 import 'widgets/repeat_for_time_widget.dart';
