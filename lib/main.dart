@@ -1,34 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy/homepage.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:workout_buddy/src/views/homepage/homepage.dart';
+import 'package:workout_buddy/src/theme/style.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(WorkoutBuddy());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class WorkoutBuddy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SBWOD',
       home: HomePageWidget(),
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.black,
-        accentColor: Color.fromRGBO(220, 171, 18, 1.0),
-        highlightColor: Color.fromRGBO(220, 171, 18, 1.0),
-
-        elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.black,
-              minimumSize: Size(100.0, 50.0),
-            )
-        ),
-        fontFamily: GoogleFonts.robotoSlab().fontFamily,
-        // fontFamily: 'Raleway',
-
-      ),
+      theme: mainTheme,
     );
   }
 }

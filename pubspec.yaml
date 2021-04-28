@@ -47,7 +47,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/google_fonts/
+    - assets/fonts/google_fonts/
     - assets/images/SBWOD.png
   # To add assets to your application, add an assets section, like this:
   # assets:
