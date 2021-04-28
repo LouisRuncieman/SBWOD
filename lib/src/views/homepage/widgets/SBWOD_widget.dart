@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:workout_buddy/src/theme/colors.dart';
 import 'package:workout_buddy/src/views/utils/launch_url.dart';
+import 'package:workout_buddy/src/theme/images.dart';
+import 'package:workout_buddy/src/theme/themes.dart';
 
-class SBWODWidget extends StatelessWidget {
-  const SBWODWidget({
+class SbwodWidget extends StatelessWidget {
+  const SbwodWidget({
     Key key,
   }) : super(key: key);
 
@@ -10,14 +13,14 @@ class SBWODWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.black,
+        borderRadius: BorderRadius.circular(circularBorderRadius),
+        color: primaryBlackColor,
       ),
       child: Material(
           color: Colors.transparent,
           child: InkWell(
               customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(circularBorderRadius),
               ),
               onTap: () {launchURL();},
               child: Padding(
@@ -26,7 +29,7 @@ class SBWODWidget extends StatelessWidget {
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(bottom: 20),
-                          child: Image.asset('assets/images/SBWOD.png', height:75, alignment: Alignment.center),
+                          child: Image.asset(AppImages.SbwodIcon, height:75, alignment: Alignment.center),
                         ),
                         Text(
                             "SBWOD",

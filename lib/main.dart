@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_buddy/src/views/homepage/homepage.dart';
-import 'package:workout_buddy/src/theme/style.dart';
+import 'package:workout_buddy/src/theme/themes.dart';
 
 void main() {
   runApp(WorkoutBuddy());

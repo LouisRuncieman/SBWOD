@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:workout_buddy/src/views/stopwatch.dart';
+import 'package:workout_buddy/src/theme/colors.dart';
+import 'package:workout_buddy/src/theme/themes.dart';
 
-class AMRAPWidget extends StatelessWidget {
-  const AMRAPWidget({
+class EmomWidget extends StatelessWidget {
+  const EmomWidget({
     Key key,
   }) : super(key: key);
 
@@ -10,14 +12,14 @@ class AMRAPWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.black,
+        borderRadius: BorderRadius.circular(circularBorderRadius),
+        color: primaryBlackColor,
       ),
       child: Material(
           color: Colors.transparent,
           child: InkWell(
               customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(circularBorderRadius),
               ),
               onTap: () {
                 Navigator.push(
@@ -32,13 +34,13 @@ class AMRAPWidget extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(bottom: 20),
                           child: Icon(
-                            Icons.alarm,
-                            color: Color.fromRGBO(220, 171, 18, 1.0),
+                            Icons.threesixty,
+                            color: primaryGoldColor,
                             size: 75.0,
                           ),
                         ),
                         Text(
-                            "AMRAP",
+                            "EMOM",
                             style: TextStyle(fontSize: 20)
                         )
                       ]

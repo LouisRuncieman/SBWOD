@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:workout_buddy/src/views/settings.dart';
-import 'for_time_widget.dart';
-import 'rounds_for_time_widget.dart';
-import 'repeat_for_time_widget.dart';
-import 'AMRAP_widget.dart';
-import 'EMOM_widget.dart';
-import 'SBWOD_widget.dart';
+import 'package:workout_buddy/src/theme/images.dart';
+import 'widgets/for_time_widget.dart';
+import 'widgets/rounds_for_time_widget.dart';
+import 'widgets/repeat_for_time_widget.dart';
+import 'widgets/AMRAP_widget.dart';
+import 'widgets/EMOM_widget.dart';
+import 'widgets/SBWOD_widget.dart';
 
 class HomePageWidget extends StatelessWidget {
 
@@ -14,7 +15,7 @@ class HomePageWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Image.asset('assets/images/SBWOD.png', height:35, alignment: Alignment.center),
+        title: Image.asset(AppImages.SbwodIcon, height:35, alignment: Alignment.center),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.settings),
@@ -41,9 +42,9 @@ class HomePageWidget extends StatelessWidget {
             ForTimeWidget(),
             RoundsForTimeWidget(),
             RepeatForTimeWidget(),
-            AMRAPWidget(),
-            EMOMWidget(),
-            SBWODWidget(),
+            AmrapWidget(),
+            EmomWidget(),
+            SbwodWidget(),
           ],
         )
       )
