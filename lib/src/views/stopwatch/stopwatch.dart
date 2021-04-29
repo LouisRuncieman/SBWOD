@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:workout_buddy/src/app/colors.dart';
+import 'package:workout_buddy/src/app/themes.dart';
 
 class Stopwatch extends StatefulWidget {
   @override
@@ -8,6 +10,7 @@ class Stopwatch extends StatefulWidget {
 }
 
 class _StopwatchState extends State<Stopwatch> {
+  bool stopwatchReset = true;
   bool flag = true;
   Stream<int> timerStream;
   StreamSubscription<int> timerSubscription;
@@ -55,11 +58,23 @@ class _StopwatchState extends State<Stopwatch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Stopwatch")),
+      // appBar: AppBar(title: Text("Stopwatch")),
+      appBar: customAppBar,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Icon(
+              Icons.timer,
+              color: primaryGoldColor,
+              size: 75.0,
+            ),
+            Text(
+              'FOR TIME',
+              style: TextStyle(
+                fontSize: 60.0,
+              ),
+            ),
             Text(
               "$hoursStr:$minutesStr:$secondsStr",
               style: TextStyle(
@@ -67,64 +82,91 @@ class _StopwatchState extends State<Stopwatch> {
               ),
             ),
             SizedBox(height: 30.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.green),
-                  onPressed: () {
-                    timerStream = stopWatchStream();
-                    timerSubscription = timerStream.listen((int newTick) {
-                      if (mounted) {
-                        setState(() {
-                          hoursStr = ((newTick / (60 * 60)) % 60)
-                              .floor()
-                              .toString()
-                              .padLeft(2, '0');
-                          minutesStr = ((newTick / 60) % 60)
-                              .floor()
-                              .toString()
-                              .padLeft(2, '0');
-                          secondsStr =
-                              (newTick % 60).floor().toString().padLeft(2, '0');
-                        });
-                      }
-                    });
-                  },
-                  child: Text(
-                    'START',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 40.0),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.red),
-                  onPressed: () {
-                    timerSubscription.cancel();
-                    timerStream = null;
-                    if (mounted) {
-                      setState(() {
-                        hoursStr = '00';
-                        minutesStr = '00';
-                        secondsStr = '00';
-                      });
-                    }
-                  },
-                  child: Text(
-                    'RESET',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            buildRow(),
           ],
         ),
       ),
     );
+  }
+
+  Row buildRow() {
+    if (stopwatchReset) {
+      return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.green),
+              onPressed: () {
+                stopwatchReset = false;
+                timerStream = stopWatchStream();
+                timerSubscription = timerStream.listen((int newTick) {
+                  if (mounted) {
+                    setState(() {
+                      hoursStr = ((newTick / (60 * 60)) % 60)
+                          .floor()
+                          .toString()
+                          .padLeft(2, '0');
+                      minutesStr = ((newTick / 60) % 60)
+                          .floor()
+                          .toString()
+                          .padLeft(2, '0');
+                      secondsStr =
+                          (newTick % 60).floor().toString().padLeft(2, '0');
+                    });
+                  }
+                });
+              },
+              child: Text(
+                'START',
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+              ),
+            )
+          ]
+      );
+    }
+    else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Colors.blue),
+            onPressed: () {
+              // todo
+            },
+            child: Text(
+              'PAUSE',
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+          SizedBox(width: 40.0),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Colors.red),
+            onPressed: () {
+              stopwatchReset = true;
+              timerSubscription.cancel();
+              timerStream = null;
+              if (mounted) {
+                setState(() {
+                  hoursStr = '00';
+                  minutesStr = '00';
+                  secondsStr = '00';
+                });
+              }
+            },
+            child: Text(
+              'RESET',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+        ],
+      );
+    }
   }
 }
