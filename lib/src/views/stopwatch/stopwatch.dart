@@ -10,6 +10,7 @@ class Stopwatch extends StatefulWidget {
 }
 
 class _StopwatchState extends State<Stopwatch> {
+  bool isStopwatchPaused = false;
   bool stopwatchReset = true;
   bool flag = true;
   Stream<int> timerStream;
@@ -44,6 +45,13 @@ class _StopwatchState extends State<Stopwatch> {
     void startTimer() {
       timer = Timer.periodic(timerInterval, tick);
     }
+
+    // void pauseTimer() {
+    //   streamController.add(pause)
+    // }
+    // void resumeTimer() {
+    //   // timer = Timer.pause(, tick);
+    // }
 
     streamController = StreamController<int>(
       onListen: startTimer,
@@ -89,6 +97,75 @@ class _StopwatchState extends State<Stopwatch> {
     );
   }
 
+  // ElevatedButton pauseOrResumeButton() {
+  //   if (!isStopwatchPaused) {
+  //     return ElevatedButton(
+  //       style: ElevatedButton.styleFrom(primary: Colors.blue),
+  //       onPressed: () {
+  //         isStopwatchPaused = true;
+  //         timerSubscription.pause();
+  //         // todo
+  //       },
+  //       child:
+  //       Text(
+  //         'PAUSE',
+  //         style: TextStyle(
+  //           fontSize: 20.0,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  //   else {
+  //     return ElevatedButton(
+  //       style: ElevatedButton.styleFrom(primary: Colors.blue),
+  //       onPressed: () {
+  //         isStopwatchPaused = false;
+  //         timerSubscription.resume();
+  //         // todo
+  //       },
+  //       child:
+  //       Text(
+  //         'RESUME',
+  //         style: TextStyle(
+  //           fontSize: 20.0,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
+
+  ElevatedButton pauseOrResumeButton() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(primary: Colors.blue),
+      onPressed: () {
+        if(isStopwatchPaused) {
+          isStopwatchPaused = false;
+          // timerSubscription?.resume(); // performing a null check operation here...
+        }
+        else {
+          isStopwatchPaused = true;
+          // timerSubscription?.pause();
+        }
+        // if (!isStopwatchPaused) {
+        //   pauseResumeButtonText = 'RESUME';
+        //   isStopwatchPaused = true;
+        //   timerSubscription.pause();
+        // }
+        // else {
+        //   pauseResumeButtonText = 'PAUSE';
+        //   isStopwatchPaused = false;
+        //   timerSubscription.resume();
+        // }
+        // todo
+      },
+      child:
+      Text(
+        isStopwatchPaused ? 'RESUME' : 'PAUSE',
+        style: TextStyle(fontSize: 20.0),
+      ),
+    );
+  }
+
   Row buildRow() {
     if (stopwatchReset) {
       return Row(
@@ -130,23 +207,13 @@ class _StopwatchState extends State<Stopwatch> {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(primary: Colors.blue),
-            onPressed: () {
-              // todo
-            },
-            child: Text(
-              'PAUSE',
-              style: TextStyle(
-                fontSize: 20.0,
-              ),
-            ),
-          ),
+          pauseOrResumeButton(),
           SizedBox(width: 40.0),
           ElevatedButton(
             style: ElevatedButton.styleFrom(primary: Colors.red),
             onPressed: () {
               stopwatchReset = true;
+              isStopwatchPaused = false;
               timerSubscription.cancel();
               timerStream = null;
               if (mounted) {
