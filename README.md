@@ -1,7 +1,6 @@
 www.SBWOD.com
 
-![SBWOD-Symbol-Vector-transparent](https://user-images.githubusercontent.com/44169061/133929920-73dbcb64-6e2c-4a85-9f0e-f19a0c5a28a5.png | width=100)
-
+<img src="https://user-images.githubusercontent.com/44169061/133929920-73dbcb64-6e2c-4a85-9f0e-f19a0c5a28a5.png" width="75">
 
 # workout_buddy
 
